@@ -2,7 +2,7 @@ package com.demo.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 
@@ -27,9 +27,9 @@ public class CustomLocaleResolver extends AcceptHeaderLocaleResolver implements 
 	}
 
 	@Bean
-	public ResourceBundleMessageSource messageSource() {
-		ResourceBundleMessageSource rs = new ResourceBundleMessageSource();
-		rs.setBasename("messages");
+	public ReloadableResourceBundleMessageSource messageSource() {
+		ReloadableResourceBundleMessageSource rs = new ReloadableResourceBundleMessageSource();
+		rs.setBasename("classpath:messages");
 		rs.setDefaultEncoding("UTF-8");
 		rs.setUseCodeAsDefaultMessage(true);
 		return rs;
